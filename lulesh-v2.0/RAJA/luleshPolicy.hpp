@@ -55,7 +55,9 @@ typedef RAJA::seq_reduce reduce_policy;
 TilingMode const lulesh_tiling_mode = Canonical;
 
 typedef RAJA::seq_segit              Segment_Iter;
-typedef RAJA::omp_parallel_for_exec  Segment_Exec;
+// typedef RAJA::omp_parallel_for_exec  Segment_Exec;
+
+typedef RAJA::omp_lws Segment_Exec; // using lightweight loop scheduling policy used from lws, which is Vivek Kale's lw-sched library at github.com/vivek224/lw-sched, library.
 
 typedef RAJA::ExecPolicy<Segment_Iter, Segment_Exec> node_exec_policy;
 typedef RAJA::ExecPolicy<Segment_Iter, Segment_Exec> elem_exec_policy;
